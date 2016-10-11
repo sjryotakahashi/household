@@ -1,6 +1,6 @@
-class CreateMicroposts < ActiveRecord::Migration
+class CreatePayments < ActiveRecord::Migration
   def change
-    create_table :microposts do |t|
+    create_table :payments do |t|
       t.references :user, index: true, foreign_key: true
       t.string :balance
       t.integer :price

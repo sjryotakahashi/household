@@ -11,9 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161008113425) do
+ActiveRecord::Schema.define(version: 20161011063718) do
 
-  create_table "microposts", force: :cascade do |t|
+  create_table "payments", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "balance"
     t.integer  "price"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20161008113425) do
     t.datetime "updated_at",      null: false
   end
 
-  add_index "microposts", ["user_id"], name: "index_microposts_on_user_id"
+  add_index "payments", ["user_id"], name: "index_payments_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
