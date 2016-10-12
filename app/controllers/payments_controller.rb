@@ -7,17 +7,27 @@ class PaymentsController < ApplicationController
   def create
     @payment = current_user.payments.build(payment_params)
     if @payment.save
-      redirect_to payments_path, notice: "success"
+      flash[:success] = "Success"
+      redirect_to payments_path
     else
       @payments = Payment.all
       render 'index'
     end
   end
+  
+  def destroy
+    @payment = current_user.payments.find_by(id: params[:id])
+    return redirect_to root_url if @payment.nil?
+    @payment.destroy
+    flash[:success] = "Deleted"
+    redirect_to payments_path
+  end
+
 
   private
 
   def payment_params
-    params.require(:payment).permit(:balance, :price, :description, :settlement_date)
+    params.require(:payment).permit(:settlement_date, :balance, :description, :price)
   end
   
 end

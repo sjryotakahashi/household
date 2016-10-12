@@ -6,15 +6,25 @@
 <%= form_for(@payment) do |f| %>
 
 <!--フォームとsubmitボタンを書く-->
-  <%= f.label :price %>
-  <%= f.text_field :price, class: 'form-control' %>
+  <%= f.label :settlement_date %>
+  <%= f.date_field :settlement_date, class: 'form-control' %>
+  
+  <%= f.label :balance %>
+  <%= f.text_field :balance, class: 'form-control' %>
+  
+  <%= f.label :description %>
+  <%= f.text_field :description, class: 'form-control' %>
 
-  <%= f.submit %>
+  <%= f.label :price %>
+  <%= f.number_field :price, class: 'form-control' %>
+
+  <%= f.submit "Create", class: "btn btn-large btn-primary" %>
 <% end %>
 
 
 <!--一覧表示-->
-<table>
+<div class="container">
+<table class="table row">
   <tr>
     <td>日付</td>
     <td>収支</td>
@@ -23,3 +33,4 @@
   </tr>
   <%= render @payments %>
 </table>
+</div>

@@ -8,8 +8,5 @@ class User < ActiveRecord::Base
   has_secure_password
   validates :password, presence: true, length: { minimum: 6, maximum: 12 }, on: :create
   validates :password, allow_blank: true, length: { minimum: 6, maximum: 12 }, on: :update
-  validates :location, allow_blank: true, 
-                       length: { minimum: 2, maximum: 20 }, 
-                       on: :update
   has_many :payments
 end

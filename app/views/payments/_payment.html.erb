@@ -4,3 +4,7 @@
   <td><%= payment.description %></td>
   <td><%= payment.price %></td>
 </tr>
+<% if current_user == payment.user %>
+  <%= link_to "delete", payment, method: :delete,
+                                 data: { confirm: "You sure?" } %>
+<% end %>
