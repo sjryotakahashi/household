@@ -1,12 +1,14 @@
 <% if logged_in? %>
-<h1>StaticPages#home</h1>
-<p>Find me in app/views/static_pages/home.html.erb</p>
 
-<p><%= link_to "Household account book", payments_path %></p>
+
+
+
+
+<p><%= link_to "Create Kakeibo", payments_path %></p>
 
 <% else %>
   <div class="center jumbotron">
-    <h1>Welcome to the Microposts</h1>
+    <h1>Welcome to the Household account book</h1>
 
     <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
   </div>
