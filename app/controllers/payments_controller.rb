@@ -1,4 +1,6 @@
 class PaymentsController < ApplicationController
+  before_action :set_params, only: [:edit, :update]
+  
   def index
     @payments = Payment.all
     @payment = Payment.new
@@ -12,6 +14,18 @@ class PaymentsController < ApplicationController
     else
       @payments = Payment.all
       render 'index'
+    end
+  end
+  
+  def edit
+  end
+  
+  def update
+    if @payment.update(payment_params)
+      flash[:success] = "Updated Profile!"
+      redirect_to payments_path
+    else
+      render 'edit'
     end
   end
   
@@ -30,4 +44,7 @@ class PaymentsController < ApplicationController
     params.require(:payment).permit(:settlement_date, :balance, :description, :price)
   end
   
+  def set_params
+    @payment = Payment.find(params[:id])
+  end
 end
