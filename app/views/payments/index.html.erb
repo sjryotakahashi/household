@@ -1,36 +1,49 @@
 <h1>Payments#index</h1>
 <p>Find me in app/views/payments/index.html.erb</p>
 
+<h1>Household account book</h1>
 
+<div class="container">
+  <div class="row">
+    <div class="col-md-5">
 <!--入力フォーム部分-->
 <%= form_for(@payment) do |f| %>
 
 <!--フォームとsubmitボタンを書く-->
-  <%= f.label :settlement_date %>
+  <%= f.label :日付 %>
   <%= f.date_field :settlement_date, class: 'form-control' %>
   
-  <%= f.label :balance %>
-  <%= f.text_field :balance, class: 'form-control' %>
+  <%= f.label :収支 %>
+  <%= f.select :balance, [["収入"], ["支出"]],  :include_blank => true %>
   
-  <%= f.label :description %>
+  <%= f.label :内容 %>
   <%= f.text_field :description, class: 'form-control' %>
 
-  <%= f.label :price %>
+  <%= f.label :金額 %>
   <%= f.number_field :price, class: 'form-control' %>
-
+  
   <%= f.submit "Create", class: "btn btn-large btn-primary" %>
 <% end %>
+    </div>
+  </div>
+</div>
 
+<br>
 
 <!--一覧表示-->
 <div class="container">
-<table class="table row">
-  <tr>
-    <td>日付</td>
-    <td>収支</td>
-    <td>内容</td>
-    <td>金額</td>
-  </tr>
-  <%= render @payments %>
-</table>
+  <div class="table-responsive">
+    <table class="table row, table-bordered ">
+      <thead>
+        <tr>
+          <th>日付</th>
+          <th>収支</th>
+          <th>内容</th>
+          <th>金額</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <%= render @payments %>
+    </table>
+  </div>
 </div>
