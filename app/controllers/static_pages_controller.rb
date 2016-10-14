@@ -4,6 +4,4 @@ class StaticPagesController < ApplicationController
     @q        = Payment.search(params[:q])
     @payments = @q.result(distinct: true)
   end
-  
-  
 end

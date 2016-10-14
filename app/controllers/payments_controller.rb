@@ -4,6 +4,7 @@ class PaymentsController < ApplicationController
   def index
     @payments = Payment.all
     @payment = Payment.new
+    @payments = Payment.paginate(page: params[:page])
   end
   
   def create

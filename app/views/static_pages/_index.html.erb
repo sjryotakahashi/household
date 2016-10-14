@@ -1,16 +1,22 @@
+<h1>My Kakeibo</h1>
+
+
 <%= search_form_for(@q, url: root_path) do |f| %>
-
   <%= f.label :balance_cont, "収支" %>
-  <%= f.search_field :balance_cont %>
+  <%= f.select :balance_cont, [["収入"], ["支出"]],  :include_blank => true %>
   
-  <%= f.label :settlement_date_gt, "日付(以上)" %>
-  <%= f.date_field :settlement_date_gt %>
-
-  <%= f.label :settlement_date_lt, "日付(以下)" %>
-  <%= f.date_field :settlement_date_lt %>
-
-  <%= f.submit %>
+  <%= f.date_field :settlement_date_gteq %>
+~
+  <%= f.date_field :settlement_date_lteq %>
+    
+  <%= f.label :description_cont, "内容" %>
+  <%= f.text_field :description_cont %>
+    
+  <%= f.submit "Search", class: "btn btn-large btn-primary" %>
 <% end %>
+
+
+<br>
 
 
 <div class="container">
