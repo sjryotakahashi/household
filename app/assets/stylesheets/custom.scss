@@ -134,3 +134,10 @@ div.actions {
   margin-left: 300px;
   letter-spacing: 1px;
 }
+
+
+// root_pathのスクロールJS用
+#board {
+  max-height: 30em;
+  overflow-y: scroll;
+}

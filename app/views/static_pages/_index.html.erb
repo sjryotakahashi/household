@@ -19,7 +19,7 @@
 <br>
 
 
-<div class="container">
+<div class="container" id="board">
   <div class="table-responsive">
     <table class="table table-hover">
       <thead>
@@ -27,7 +27,8 @@
           <th>日付</th>
           <th>収支</th>
           <th>内容</th>
-          <th>金額</th>
+          <th>収入</th>
+          <th>支出</th>
           <th colspan="2"></th>
         </tr>
       </thead>
@@ -35,3 +36,12 @@
     </table>
   </div>
 </div>
+
+収入：<div style="collor:blue"><%= @income %></div><br>
+支出：<div style="collor:red"><%= @spending %></div><br>
+
+収支：<%= @income - @spending %>
+
+<script>
+  $("#board").scrollTop($("#board")[0].scrollHeight);
+</script>

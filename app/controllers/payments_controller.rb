@@ -2,9 +2,9 @@ class PaymentsController < ApplicationController
   before_action :set_params, only: [:edit, :update]
   
   def index
-    @payments = Payment.all
-    @payment = Payment.new
-    @payments = Payment.paginate(page: params[:page])
+    @payments = current_user.payments.all
+    @payment = current_user.payments.build
+    @payments = current_user.payments.order(settlement_date: :desc).paginate(page: params[:page])
   end
   
   def create
