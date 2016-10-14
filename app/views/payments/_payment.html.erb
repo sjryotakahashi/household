@@ -1,14 +1,13 @@
-<tbody>
-  <tr>
-    <td><%= payment.settlement_date %></td>
-    <td><%= payment.balance %></td>
-    <td><%= payment.description %></td>
-    <td><%= payment.price if payment.balance == '収入' %></td>
-    <td><%= payment.price if payment.balance == '支出'  %></td>
-    <% if current_user == payment.user %>
-    <td><%= link_to "Edit", edit_payment_path(payment),class:'btn btn-success btn-xs' %></td>
-    <td><%= link_to "Delete", payment, method: :delete,
-                    data: { confirm: "Are you sure?" }, class:'btn btn-danger btn-xs' %></td>
-    <% end %>
-  </tr>
-</tbody>
+
+<tr>
+  <td><%= payment.settlement_date %></td>
+  <td><%= payment.balance %></td>
+  <td><%= payment.description %></td>
+  <td><%= payment.price if payment.balance == '収入' %></td>
+  <td><%= payment.price if payment.balance == '支出'  %></td>
+  <% if current_user == payment.user %>
+  <td><%= link_to "Edit", edit_payment_path(payment),class:'btn btn-success btn-xs' %></td>
+  <td><%= link_to "Delete", payment, method: :delete,
+                  data: { confirm: "Are you sure?" }, class:'btn btn-danger btn-xs' %></td>
+  <% end %>
+</tr>

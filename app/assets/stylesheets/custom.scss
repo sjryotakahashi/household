@@ -136,8 +136,9 @@ div.actions {
 }
 
 
-// root_pathのスクロールJS用
+// トップページのデーター枠
 #board {
   max-height: 30em;
   overflow-y: scroll;
+  margin: 0 15px;
 }
