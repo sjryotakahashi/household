@@ -140,5 +140,12 @@ div.actions {
 #board {
   max-height: 30em;
   overflow-y: scroll;
-  margin: 0 15px;
+}
+
+// 収支合計のパネル
+#result {
+  margin: 30px 0 15px;
+  p {
+    font-size: 130%;
+  }
 }

@@ -2,7 +2,6 @@ class PaymentsController < ApplicationController
   before_action :set_params, only: [:edit, :update]
   
   def index
-    @payments = current_user.payments.all
     @payment = current_user.payments.build
     @payments = current_user.payments.order(settlement_date: :desc).paginate(page: params[:page])
   end
@@ -13,7 +12,7 @@ class PaymentsController < ApplicationController
       flash[:success] = "Success"
       redirect_to payments_path
     else
-      @payments = Payment.all
+      @payments = current_user.payments.order(settlement_date: :desc).paginate(page: params[:page])
       render 'index'
     end
   end
@@ -35,7 +34,7 @@ class PaymentsController < ApplicationController
     return redirect_to root_url if @payment.nil?
     @payment.destroy
     flash[:success] = "Deleted"
-    redirect_to payments_path
+    redirect_to root_path
   end
 
 

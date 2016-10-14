@@ -37,25 +37,25 @@
 
 <%= will_paginate %>
 
-<div class="container">
-  <div class="table-responsive">
-    <table class="table table-row table-hover">
-      <thead>
-        <tr>
-          <th class="col-md-3">日付</th>
-          <th class="col-md-3">収支</th>
-          <th class="col-md-3">内容</th>
-          <th class="col-md-2">収入</th>
-          <th class="col-md-2">支出</th>
-          <th class="col-md-1" colspan="2"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <%= render @payments %>
-      </tbody>
-    </table>
-  </div>
+
+<div class="table-responsive">
+  <table class="table table-row table-hover">
+    <thead>
+      <tr>
+        <th class="col-md-2">日付</th>
+        <th class="col-md-1">区分</th>
+        <th class="col-md-5">内容</th>
+        <th class="col-md-1">収入</th>
+        <th class="col-md-1">支出</th>
+        <th class="col-md-2" colspan="2"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render @payments %>
+    </tbody>
+  </table>
 </div>
+
 
 <%= will_paginate %>
 
