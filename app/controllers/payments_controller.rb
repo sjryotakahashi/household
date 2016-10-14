@@ -23,8 +23,8 @@ class PaymentsController < ApplicationController
   
   def update
     if @payment.update(payment_params)
-      flash[:success] = "Updated Profile!"
-      redirect_to payments_path
+      flash[:success] = "Updated"
+      redirect_to root_path
     else
       render 'edit'
     end
