@@ -1,0 +1,31 @@
+<%= search_form_for(@q, url: root_path) do |f| %>
+
+  <%= f.label :balance_cont, "収支" %>
+  <%= f.search_field :balance_cont %>
+  
+  <%= f.label :settlement_date_gt, "日付(以上)" %>
+  <%= f.date_field :settlement_date_gt %>
+
+  <%= f.label :settlement_date_lt, "日付(以下)" %>
+  <%= f.date_field :settlement_date_lt %>
+
+  <%= f.submit %>
+<% end %>
+
+
+<div class="container">
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>日付</th>
+          <th>収支</th>
+          <th>内容</th>
+          <th>金額</th>
+          <th colspan="2"></th>
+        </tr>
+      </thead>
+      <%= render @payments %>
+    </table>
+  </div>
+</div>
