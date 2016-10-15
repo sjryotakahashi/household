@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_params, only: [:show, :edit, :update]
-  before_action :correct_user, only: [:edit, :update]
-  before_action :logged_in_user, except: [:new, :create]
+  before_action :correct_user, only: [:show,:edit, :update]
 
   def show
   end

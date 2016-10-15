@@ -1,6 +1,7 @@
 class PaymentsController < ApplicationController
   before_action :set_params, only: [:edit, :update]
-  before_action :logged_in_user
+  before_action :correct_user, only: [:edit, :update]
+  before_action :logged_in_user, except: [:edit, :update]
   
   def index
     @payment = current_user.payments.build
@@ -47,5 +48,9 @@ class PaymentsController < ApplicationController
   
   def set_params
     @payment = Payment.find(params[:id])
+  end
+  
+  def correct_user
+    redirect_to root_path if @payment.user != current_user
   end
 end
