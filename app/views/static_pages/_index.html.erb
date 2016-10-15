@@ -1,32 +1,52 @@
-<h1>My Kakeibo</h1>
+<div class="title-kakeibo">
+  <h1>Search Kakeibo</h1>
+</div>
 
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= search_form_for(@q, url: root_path) do |f| %>
+      <div class="search-form">
+        収支の選択
+        <%= f.select :balance_cont, [["収入"], ["支出"]],  :include_blank => true %>
+      </div>
+      <div class="search-form">
+        内容で絞り込む
+        <%= f.text_field :description_cont %>
+      </div>
+      <div class="search-form">
+        日付の範囲指定
+        <div class="form-group">
+          <div class="col-xs-6">
+            <%= f.date_field :settlement_date_gteq %>
+          </div>
+          <div class="col-xs-6">
+            <%= f.date_field :settlement_date_lteq %>
+          </div>
+        </div>
+      </div>
+      <div class="search-action">
+        <%= f.submit "Search", class: "btn btn-large btn-info" %>
+      </div>
+    <% end %>
+  </div>
+</div>
 
-<%= search_form_for(@q, url: root_path) do |f| %>
-  <%= f.label :balance_cont, "収支" %>
-  <%= f.select :balance_cont, [["収入"], ["支出"]],  :include_blank => true %>
-  
-  <%= f.date_field :settlement_date_gteq %>
-~
-  <%= f.date_field :settlement_date_lteq %>
-    
-  <%= f.label :description_cont, "内容" %>
-  <%= f.text_field :description_cont %>
-    
-  <%= f.submit "Search", class: "btn btn-large btn-primary" %>
-<% end %>
 
 <div class="panel panel-default row" id="result">
   <div class="panel-body">
-  <div class="col-sm-6"></div>
-  <div class="col-sm-2"><p>収入：<span style="color:blue;"><%= @income %></span></p></div>
-  <div class="col-sm-2"><p>支出：<span style="color:red;"><%= @spending %></span></p></div>
+  <div class="col-sm-2"></div>
+  <div class="col-sm-3"><p>収入：<span style="color:blue;"><%= @income %></span></p></div>
+  <div class="col-sm-3"><p>支出：<span style="color:red;"><%= @spending %></span></p></div>
   <% if @income - @spending >= 0 %>
-    <div class="col-sm-2"><p>収支：<span style="color:blue;"><%= @income - @spending %></span></p></div>
+    <div class="col-sm-4"><p>収支：<span style="color:blue;"><%= @income - @spending %></span></p></div>
   <% else %>
-    <div class="col-sm-2"><p>収支：<span style="color:red;"><%= @income - @spending %></span></p></div>
+    <div class="col-sm-4"><p>収支：<span style="color:red;"><%= @income - @spending %></span></p></div>
   <% end %>
   </div>
 </div>
+
+
+<br>
 
 
 <div class="table-responsive">
@@ -35,7 +55,7 @@
       <tr>
         <th class="col-md-2">日付</th>
         <th class="col-md-1">区分</th>
-        <th class="col-md-5">内容</th>
+        <th class="col-md-4">内容</th>
         <th class="col-md-1">収入</th>
         <th class="col-md-1">支出</th>
         <th class="col-md-2" colspan="2"></th>
@@ -50,4 +70,3 @@
     </tbody>
   </table>
 </div>
-

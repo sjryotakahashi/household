@@ -5,7 +5,7 @@
   <% else %>
     <td class="col-md-1" style="color:red;"><%= payment.balance %></td>
   <% end %>
-  <td class="col-md-5"><%= payment.description %></td>
+  <td class="col-md-4"><%= payment.description %></td>
   <td class="col-md-1" style="color:blue;"><%= payment.price if payment.balance == '収入' %></td>
   <td class="col-md-1" style="color:red;"><%= payment.price if payment.balance == '支出'  %></td>
   <% if current_user == payment.user %>

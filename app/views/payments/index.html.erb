@@ -39,17 +39,21 @@
 
 
 <div class="table-responsive">
-  <table class="table table-row table-hover">
+  <table class="table table table-hover">
     <thead>
       <tr>
         <th class="col-md-2">日付</th>
         <th class="col-md-1">区分</th>
-        <th class="col-md-5">内容</th>
+        <th class="col-md-4">内容</th>
         <th class="col-md-1">収入</th>
         <th class="col-md-1">支出</th>
         <th class="col-md-2" colspan="2"></th>
       </tr>
     </thead>
+  </table>
+</div>
+<div class="table-responsive" id="board">
+  <table class="table table-hover">
     <tbody>
       <%= render @payments %>
     </tbody>

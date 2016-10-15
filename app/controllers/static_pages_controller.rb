@@ -5,4 +5,4 @@ class StaticPagesController < ApplicationController
     @spending = @payments.where(balance: "支出").sum(:price)
     @income = @payments.where(balance: "収入").sum(:price)
   end
-end 
+end
