@@ -6,26 +6,38 @@
   <div class="col-md-6 col-md-offset-3">
     <%= search_form_for(@q, url: root_path) do |f| %>
       <div class="search-form">
-        収支の選択
-        <%= f.select :balance_cont, [["収入"], ["支出"]],  :include_blank => true %>
+        <h5>収支の選択</h5>
+        <div class="form-group">
+          <div class="col-xs-12">
+            <%= f.select :balance_cont, [["収入"], ["支出"]],  :include_blank => true, class: 'form-control' %>
+          </div>
+        </div>
       </div>
       <div class="search-form">
-        内容で絞り込む
-        <%= f.text_field :description_cont %>
+        <h5>内容で絞り込む</h5>
+        <div class="form-group">
+          <div class="col-xs-12">
+            <%= f.text_field :description_cont, class: 'form-control' %>
+          </div>
+        </div>
       </div>
       <div class="search-form">
-        日付の範囲指定
+        <h5>日付の範囲指定</h5>
         <div class="form-group">
           <div class="col-xs-6">
-            <%= f.date_field :settlement_date_gteq %>
+            <%= f.date_field :settlement_date_gteq, class: 'form-control' %>
           </div>
           <div class="col-xs-6">
-            <%= f.date_field :settlement_date_lteq %>
+            <%= f.date_field :settlement_date_lteq, class: 'form-control' %>
           </div>
         </div>
       </div>
       <div class="search-action">
-        <%= f.submit "Search", class: "btn btn-large btn-info" %>
+        <div class="form-group">
+          <div class="col-xs-12">
+            <%= f.submit "Search", class: "btn btn-large btn-info" %>
+          </div>
+        </div>
       </div>
     <% end %>
   </div>

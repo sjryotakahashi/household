@@ -1,5 +1,6 @@
 class PaymentsController < ApplicationController
   before_action :set_params, only: [:edit, :update]
+  before_action :logged_in_user
   
   def index
     @payment = current_user.payments.build
