@@ -11,7 +11,7 @@ class PaymentsController < ApplicationController
   def create
     @payment = current_user.payments.build(payment_params)
     if @payment.save
-      flash[:success] = "Success"
+      flash[:success] = "作成しました"
       redirect_to payments_path
     else
       @payments = current_user.payments.order(settlement_date: :desc).paginate(page: params[:page])
@@ -24,7 +24,7 @@ class PaymentsController < ApplicationController
   
   def update
     if @payment.update(payment_params)
-      flash[:success] = "Updated"
+      flash[:success] = "更新しました"
       redirect_to root_path
     else
       render 'edit'
@@ -35,7 +35,7 @@ class PaymentsController < ApplicationController
     @payment = current_user.payments.find_by(id: params[:id])
     return redirect_to root_url if @payment.nil?
     @payment.destroy
-    flash[:success] = "Deleted"
+    flash[:success] = "削除しました"
     redirect_to root_path
   end
 

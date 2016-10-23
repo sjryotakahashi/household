@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      flash[:success] = "Welcome to the Sample App!"
+      flash[:success] = "アカウントを作成しました"
       redirect_to @user
     else
       render 'new'
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
   
   def update
     if @user.update(user_params)
-      flash[:success] = "Updated Profile!"
+      flash[:success] = "プロフィールを更新しました"
       redirect_to @user
     else
       render 'edit'
