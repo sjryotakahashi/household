@@ -199,8 +199,7 @@ ja:
       long: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"
       short: "%y/%m/%d %H:%M"
     pm: 午後
-    
-    
+
   activerecord:
     attributes:
       payment:
@@ -208,7 +207,7 @@ ja:
         balance: 収支
         description: 内容
         price: 金額
-        
+
       user:
         name: 名前
         email: メールアドレス

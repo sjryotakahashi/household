@@ -1,31 +1,36 @@
-<% if logged_in? %>
-
-<div class="title-kakeibo">
-  <h1>データを作成する</h1>
-</div>
+<h1><i class="glyphicon glyphicon-search glyphicon-h1"></i>検索</h1>
 
 <div class="row">
-  <div class="col-xs-5 col-xs-offset-3">
-    <%= form_for(@payment) do |f| %>
-      <%= render 'shared/error_messages', object: f.object %>
-      <div class="field">
-        <%= f.label :日付 %>
-        <%= f.date_field :settlement_date, class: 'form-control' %>
+  <div class="col-md-6 col-md-offset-3">
+    <%= search_form_for(@q, url: payments_path) do |f| %>
+      <div class="form-group">
+        <div class="col-md-12">
+          <%= f.label :収支 %>
+          <%= f.select :balance_cont, [["収入"], ["支出"]],  :include_blank => true, class: 'form-control' %>
+        </div>
       </div>
-      <div class="field">
-        <%= f.label :収支 %>
-        <%= f.select :balance, [["収入"], ["支出"]],  :include_blank => true %>
+      <div class="form-group">
+        <div class="col-md-12">
+          <%= f.label :内容 %>
+          <%= f.text_field :description_cont, class: 'form-control' %>
+        </div>
       </div>
-      <div class="field">
-        <%= f.label :内容 %>
-        <%= f.text_field :description, class: 'form-control' %>
+      <div class="form-group">
+        <div class="col-md-12">
+          <%= f.label :日付の範囲指定 %>
+        </div>
+        <div class="col-md-5">
+          <%= f.date_field :settlement_date_gteq, class: 'form-control' %>
+        </div>
+        <div class="col-md-2" id="day">~</div>
+        <div class="col-md-5">
+          <%= f.date_field :settlement_date_lteq, class: 'form-control' %>
+        </div>
       </div>
-      <div class="field">
-        <%= f.label :金額 %>
-        <%= f.number_field :price, class: 'form-control' %>
-      </div>
-      <div class="actions">
-        <%= f.submit "作成", class: "btn btn-large btn-primary" %>
+      <div class="form-group">
+        <div class="col-md-12">
+          <%= f.submit "データの絞り込み", class: "btn btn-primary" %>
+        </div>
       </div>
     <% end %>
   </div>
@@ -35,38 +40,39 @@
 <br>
 
 
-<%= will_paginate %>
+<div id="board-all">
+  <%= will_paginate %>
 
-
-<div class="table-responsive">
-  <table class="table table table-hover">
-    <thead>
-      <tr>
-        <th class="col-xs-2">日付</th>
-        <th class="col-xs-1">区分</th>
-        <th class="col-xs-4">内容</th>
-        <th class="col-xs-1">収入</th>
-        <th class="col-xs-1">支出</th>
-        <th class="col-xs-2" colspan="2"></th>
-      </tr>
-    </thead>
-  </table>
-</div>
-<div class="table-responsive" id="board">
-  <table class="table table-hover">
-    <tbody>
-      <%= render @payments %>
-    </tbody>
-  </table>
-</div>
-
-
-<%= will_paginate %>
-
-
-<% else %>
-  <div class="center jumbotron">
-    <h1>My Kakeibo</h1>
-    <%= link_to "サインアップ", signup_path, class: "btn btn-lg btn-primary" %>
+  <div class="table-responsive" id="board-1">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th class="col-md-2">日付</th>
+          <th class="col-md-2">区分</th>
+          <th class="col-md-3">内容</th>
+          <th class="col-md-1">収入</th>
+          <th class="col-md-1">支出</th>
+          <th class="col-md-3" colspan="3"></th>
+        </tr>
+      </thead>
+    </table>
   </div>
-<% end %>
+
+  <%= render @payments %>
+
+  <%= will_paginate %>
+</div>
+
+
+<div class="panel panel-default row" id="result">
+  <div class="panel-body">
+    <div class="col-md-2"></div>
+    <div class="col-md-3"><p>収入： <span style="color:blue;"><%= @income %></span></p></div>
+    <div class="col-md-3"><p>支出： <span style="color:red;"><%= @spending %></span></p></div>
+    <% if @income - @spending >= 0 %>
+      <div class="col-md-4"><p>収支： <span style="color:blue;"><%= @income - @spending %></span></p></div>
+    <% else %>
+      <div class="col-md-4"><p>収支： <span style="color:red;"><%= @income - @spending %></span></p></div>
+    <% end %>
+  </div>
+</div>

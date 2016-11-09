@@ -1,11 +1,8 @@
-<div class="title-kakeibo">
-  <h1>
-    <%= gravatar_for @user %>
-    <%= @user.name %>
-  </h1>
-</div>
-
-<div id="profile">
-  <p><%= "ユーザー名: " + @user.name %></p>
-  <p><%= "メールアドレス: " + @user.email %></p>
+<div class="user-show">
+  <div class="show">
+    <p>名前: <%= @user.name %></p>
+    <p>メールアドレス: <%= @user.email %></p>
+  </div>
+  <%= link_to "サンプルページへ", root_path, class:'btn btn-sm btn-primary' %>
+  <%= link_to "プロフィールの編集", edit_user_path, class:'btn btn-sm btn-success' %>
 </div>

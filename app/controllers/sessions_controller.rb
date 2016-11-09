@@ -9,14 +9,13 @@ class SessionsController < ApplicationController
       flash[:info] = "#{@user.name}さんがログインしました"
       redirect_to @user
     else
-      flash[:danger] = 'invalid email/password combination'
+      flash[:danger] = 'メールアドレスかパスワードが間違っています'
       render 'new'
     end
   end
-  
+
   def destroy
     session[:user_id] = nil
-    flash[:info] = "ログアウトしました"
     redirect_to root_path
   end
 end

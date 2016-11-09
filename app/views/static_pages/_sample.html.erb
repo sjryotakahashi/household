@@ -1,0 +1,72 @@
+<h1>サンプルページ</h1>
+
+<div class="jumbotron" id="jumbotron-sample">
+  <div class="step">
+    <span>STEP1</span>
+    <%= link_to "データを作成する", new_payment_path, class: "btn btn-default" %>
+    <i class="glyphicon glyphicon-arrow-right arrow-right-blue"></i>
+    <span>STEP2</span>
+    <%= link_to "データを検索する", payments_path, class: "btn btn-default" %>
+  </div>
+  <i class="glyphicon glyphicon-arrow-down arrow-down-blue"></i>
+  <div id="board-all">
+    <div class="table-responsive" id="board-1">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th class="col-md-2">日付</th>
+            <th class="col-md-2">区分</th>
+            <th class="col-md-3">内容</th>
+            <th class="col-md-1">収入</th>
+            <th class="col-md-1">支出</th>
+            <th class="col-md-3" colspan="3"></th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+    <div class="table-responsive" id="board-2">
+      <table class="table table-hover">
+        <tbody>
+          <tr>
+            <td class="col-md-2">2016-10-25</td>
+            <td class="col-md-2" style="color:blue;">収入</td>
+            <td class="col-md-3">給料</td>
+            <td class="col-md-1" style="color:blue;">250000</td>
+            <td class="col-md-1"></td>
+            <td class="col-md-1"><%= link_to "詳細", "#", class:'btn btn-primary btn-xs' %></td>
+            <td class="col-md-1"><%= link_to "編集", "#", class:'btn btn-success btn-xs' %></td>
+            <td class="col-md-1"><%= link_to "削除", "#", class:'btn btn-danger btn-xs' %></td>
+          </tr>
+          <tr>
+            <td class="col-md-2">2016-11-10</td>
+            <td class="col-md-2" style="color:red;">支出</td>
+            <td class="col-md-3">食費</td>
+            <td class="col-md-1"></td>
+            <td class="col-md-1" style="color:red;">1391</td>
+            <td class="col-md-1"><%= link_to "詳細", "#", class:'btn btn-primary btn-xs' %></td>
+            <td class="col-md-1"><%= link_to "編集", "#", class:'btn btn-success btn-xs' %></td>
+            <td class="col-md-1"><%= link_to "削除", "#", class:'btn btn-danger btn-xs' %></td>
+          </tr>
+          <tr>
+            <td class="col-md-2">2016-11-16</td>
+            <td class="col-md-2" style="color:red;">支出</td>
+            <td class="col-md-3">食費</td>
+            <td class="col-md-1"></td>
+            <td class="col-md-1" style="color:red;">2538</td>
+            <td class="col-md-1"><%= link_to "詳細", "#", class:'btn btn-primary btn-xs' %></td>
+            <td class="col-md-1"><%= link_to "編集", "#", class:'btn btn-success btn-xs' %></td>
+            <td class="col-md-1"><%= link_to "削除", "#", class:'btn btn-danger btn-xs' %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="panel panel-default row" id="result">
+    <div class="panel-body">
+      <div class="col-md-2"></div>
+      <div class="col-md-3"><p>収入： <span style="color:blue;">250000</span></p></div>
+      <div class="col-md-3"><p>支出： <span style="color:red;">3929</span></p></div>
+      <div class="col-md-4"><p>収支： <span style="color:blue;">246071</span></p></div>
+    </div>
+  </div>
+</div>

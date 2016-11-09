@@ -1,8 +1,12 @@
 <% if logged_in? %>
-  <%= render 'index' %>
+
+<%= render 'static_pages/sample' %>
+
 <% else %>
-  <div class="center jumbotron">
-    <h1>My Kakeibo</h1>
-    <%= link_to "サインアップ", signup_path, class: "btn btn-lg btn-primary" %>
+  <div class="jumbotron" id="jumbotron-signup">
+    <p>日本で最もシンプルな家計簿</p>
+    <div id="home-btn">
+      <%= link_to "サインアップ", signup_path, id: "home-btn-white" %>
+    </div>
   </div>
 <% end %>

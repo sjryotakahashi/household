@@ -1,0 +1,10 @@
+<div class="payment-show">
+  <div class="show">
+    <p>日付: <%= @payment.settlement_date %></p>
+    <p>収支: <%= @payment.balance %></p>
+    <p>内容: <%= @payment.description %></p>
+    <p>金額: <%= @payment.price %> 円</p>
+  </div>
+  <%= link_to "データの編集", edit_payment_path(@payment), class:'btn btn-sm btn-success' %>
+  <%= link_to "戻る", payments_path, class:'btn btn-sm btn-default' %>
+</div>

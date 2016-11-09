@@ -1,16 +1,23 @@
-<tr>
-  <td class="col-xs-2"><%= payment.settlement_date %></td>
-  <% if payment.balance == '収入' %>
-    <td class="col-xs-1" style="color:blue;"><%= payment.balance %></td>
-  <% else %>
-    <td class="col-xs-1" style="color:red;"><%= payment.balance %></td>
-  <% end %>
-  <td class="col-xs-4"><%= payment.description %></td>
-  <td class="col-xs-1" style="color:blue;"><%= payment.price if payment.balance == '収入' %></td>
-  <td class="col-xs-1" style="color:red;"><%= payment.price if payment.balance == '支出'  %></td>
-  <% if current_user == payment.user %>
-  <td class="col-xs-1"><%= link_to "編集", edit_payment_path(payment),class:'btn btn-success btn-xs' %></td>
-  <td class="col-xs-1"><%= link_to "削除", payment, method: :delete,
-                  data: { confirm: "削除してもよろしいですか？" }, class:'btn btn-danger btn-xs' %></td>
-  <% end %>
-</tr>
+<div class="table-responsive" id="board-2">
+  <table class="table table-hover">
+    <tbody>
+      <tr>
+        <td class="col-md-2"><%= payment.settlement_date %></td>
+        <% if payment.balance == '収入' %>
+          <td class="col-md-2" style="color:blue;"><%= payment.balance %></td>
+        <% else %>
+          <td class="col-md-2" style="color:red;"><%= payment.balance %></td>
+        <% end %>
+          <td class="col-md-3"><%= payment.description %></td>
+          <td class="col-md-1" style="color:blue;"><%= payment.price if payment.balance == '収入' %></td>
+          <td class="col-md-1" style="color:red;"><%= payment.price if payment.balance == '支出' %></td>
+        <% if current_user == payment.user %>
+          <td class="col-md-1"><%= link_to "詳細", payment, class:'btn btn-primary btn-xs' %></td>
+          <td class="col-md-1"><%= link_to "編集", edit_payment_path(payment), class:'btn btn-success btn-xs' %></td>
+          <td class="col-md-1"><%= link_to "削除", payment, method: :delete,
+                                   data: { confirm: "削除してもよろしいですか？" }, class:'btn btn-danger btn-xs' %></td>
+        <% end %>
+      </tr>
+    </tbody>
+  </table>
+</div>
